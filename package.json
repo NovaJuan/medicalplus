@@ -1,0 +1,48 @@
+{
+  "name": "medicalplus",
+  "version": "0.1.0",
+  "private": true,
+  "main": "backend/main.js",
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.3",
+    "@testing-library/user-event": "^12.6.2",
+    "cross-env": "^7.0.3",
+    "electron": "^11.2.0",
+    "fs-extra": "^9.1.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.1",
+    "sqlite3": "^5.0.1",
+    "web-vitals": "^0.2.4"
+  },
+  "scripts": {
+    "start:react": "react-scripts start",
+    "start:electron": "cross-env NODE_ENV=development electron .",
+    "start": "concurrently  \"npm run start:react\" \"npm run start:electron\"",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0"
+  }
+}
