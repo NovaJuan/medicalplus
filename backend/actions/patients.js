@@ -28,8 +28,8 @@ const handler = (e, type, data) => {
 };
 
 const createPatient = async (data) => {
-  const { copyFile } = require("fs-extra");
   const { randomBytes } = require("crypto");
+  const sharp = require("sharp");
 
   const newPatient = { ...data };
 
@@ -38,16 +38,18 @@ const createPatient = async (data) => {
     newPatient.image = (await randomBytes(16).toString("hex")) + extname;
   }
 
+  const currentDate = Date.now();
+
   await DB.Query(
-    "INSERT INTO patients (name,age,weight,height,story,document,image) VALUES (?,?,?,?,?,?,?)",
-    [...Object.values(newPatient)]
+    "INSERT INTO patients (name,age,weight,height,story,document,image,last_modified,created_at) VALUES (?,?,?,?,?,?,?,?,?)",
+    [...Object.values(newPatient), currentDate, currentDate]
   );
 
   if (data.image !== null) {
-    await copyFile(
-      data.image,
-      path.join(__dirname, `../static/images/${newPatient.image}`)
-    );
+    await sharp(data.image)
+      .flatten({ background: { r: 255, g: 255, b: 255 } })
+      .resize(200, 200)
+      .toFile(path.join(__dirname, `../static/images/${newPatient.image}`));
   }
 
   return true;
@@ -70,7 +72,7 @@ const checkDocumentIDExists = async ({ doc, id }) => {
 };
 
 const getAllPatients = async () => {
-  return await DB.GetAll("SELECT * FROM patients");
+  return await DB.GetAll("SELECT * FROM patients ORDER BY last_modified DESC");
 };
 
 const getPatient = async (id) => {
@@ -78,8 +80,9 @@ const getPatient = async (id) => {
 };
 
 const updatePatient = async ({ id, patient }) => {
-  const { copyFile, unlink } = require("fs-extra");
+  const { unlink } = require("fs-extra");
   const { randomBytes } = require("crypto");
+  const sharp = require("sharp");
 
   const oldPatient = await DB.Get("SELECT * FROM patients WHERE id = ?", [id]);
   const newPatient = { ...patient };
@@ -91,8 +94,8 @@ const updatePatient = async ({ id, patient }) => {
   }
 
   await DB.Query(
-    "UPDATE patients SET name = ?, document = ?, age = ?, height = ?, weight = ?, story = ?, image = ? WHERE id = ?",
-    [...Object.values(newPatient), id]
+    "UPDATE patients SET name = ?, document = ?, age = ?, height = ?, weight = ?, story = ?, image = ?, last_modified = ? WHERE id = ?",
+    [...Object.values(newPatient), Date.now(), id]
   );
 
   if (oldPatient.image !== patient.image) {
@@ -101,10 +104,12 @@ const updatePatient = async ({ id, patient }) => {
         path.join(__dirname, `../static/images/${oldPatient.image}`)
       );
     }
-    await copyFile(
-      patient.image,
-      path.join(__dirname, `../static/images/${newPatient.image}`)
-    );
+
+    await sharp(patient.image)
+      .flatten({ background: { r: 255, g: 255, b: 255 } })
+      .resize(200, 200)
+      .jpeg()
+      .toFile(path.join(__dirname, `../static/images/${newPatient.image}`));
   }
 
   return true;

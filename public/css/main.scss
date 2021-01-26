@@ -214,7 +214,9 @@ small.error {
     font-size: 1.5rem;
     margin-bottom: 1rem;
   }
+}
 
+.patient-form {
   input,
   textarea {
     border: 2px solid #a1a1a1;
@@ -276,46 +278,53 @@ small.error {
     display: flex;
     justify-content: center;
     grid-gap: 1rem;
+  }
 
-    button {
-      margin: 0.5rem;
-      width: 150px;
-      color: #ffffff;
-      border: none;
-      padding: 0.6rem;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      font-weight: 600;
+  button {
+    margin: 0.5rem;
+    width: 100px;
+    color: #ffffff;
+    border: none;
+    padding: 0.6rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  button.save {
+    background-color: #00ca00;
+    &:hover {
+      background-color: #008d00;
     }
 
-    .save {
-      background-color: #00ca00;
-      &:hover {
-        background-color: #008d00;
-      }
-
-      &:disabled {
-        opacity: 0.5;
-        background-color: #777777;
-      }
+    &:disabled {
+      opacity: 0.5;
+      background-color: #777777;
     }
+  }
 
-    .delete {
-      background-color: #fe0000;
-      &:hover {
-        background-color: #da0000;
-      }
+  button.delete {
+    background-color: #fe0000;
+    &:hover {
+      background-color: #da0000;
     }
+  }
 
-    .discard {
-      background-color: #009df8;
-      &:hover {
-        background-color: #0076bb;
-      }
-      &:disabled {
-        opacity: 0.5;
-        background-color: #777777;
-      }
+  button.discard {
+    background-color: #009df8;
+    &:hover {
+      background-color: #0076bb;
+    }
+    &:disabled {
+      opacity: 0.5;
+      background-color: #777777;
+    }
+  }
+
+  button.print {
+    background-color: #aa00f8;
+    &:hover {
+      background-color: #bb009c;
     }
   }
 }

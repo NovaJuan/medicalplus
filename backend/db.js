@@ -18,7 +18,9 @@ db.run(
       height INTEGER NOT NULL,
       weight INTEGER NOT NULL,
       story TEXT,
-      image TEXT
+      image TEXT,
+      last_modified INTEGER,
+      created_at INTEGER
   )
   `
 );

@@ -141,7 +141,7 @@ function PatientModal({ id, closeModal }) {
               &times; Close
             </span>
           </h1>
-          <form onSubmit={onSubmit}>
+          <form onSubmit={onSubmit} className="patient-form">
             <div className="columns">
               <div className="picture">
                 <img src={image} alt={patient.name} />
@@ -235,6 +235,7 @@ function PatientModal({ id, closeModal }) {
               <button className="delete" onClick={deletePatient}>
                 Delete Patient
               </button>
+              <button className="print">Print</button>
             </div>
           </form>
         </div>

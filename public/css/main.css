@@ -252,27 +252,27 @@ small.error {
   margin-bottom: 1rem;
 }
 
-.PatientModal input,
-.PatientModal textarea {
+.patient-form input,
+.patient-form textarea {
   border: 2px solid #a1a1a1;
   padding: 0.2rem;
   border-radius: 0.2rem;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.PatientModal input {
+.patient-form input {
   width: 100%;
   max-width: 500px;
 }
 
-.PatientModal label {
+.patient-form label {
   display: block;
   font-size: 0.8rem;
   margin-bottom: 0.2rem;
   font-weight: 600;
 }
 
-.PatientModal .columns {
+.patient-form .columns {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -281,13 +281,13 @@ small.error {
   max-width: 100%;
 }
 
-.PatientModal .columns .picture {
+.patient-form .columns .picture {
   overflow: hidden;
   width: 200px;
   margin-right: 1rem;
 }
 
-.PatientModal .columns img {
+.patient-form .columns img {
   -o-object-fit: cover;
      object-fit: cover;
   width: 200px;
@@ -295,26 +295,26 @@ small.error {
   margin-bottom: 0.3rem;
 }
 
-.PatientModal .columns .info {
+.patient-form .columns .info {
   width: 45%;
   min-width: 260px;
 }
 
-.PatientModal .columns .info div {
+.patient-form .columns .info div {
   margin-bottom: 0.6rem;
 }
 
-.PatientModal .story {
+.patient-form .story {
   margin-top: 1rem;
   width: 100%;
 }
 
-.PatientModal .story textarea {
+.patient-form .story textarea {
   width: 100%;
   resize: vertical;
 }
 
-.PatientModal .button-group {
+.patient-form .button-group {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -324,9 +324,9 @@ small.error {
   grid-gap: 1rem;
 }
 
-.PatientModal .button-group button {
+.patient-form button {
   margin: 0.5rem;
-  width: 150px;
+  width: 100px;
   color: #ffffff;
   border: none;
   padding: 0.6rem;
@@ -335,37 +335,45 @@ small.error {
   font-weight: 600;
 }
 
-.PatientModal .button-group .save {
+.patient-form button.save {
   background-color: #00ca00;
 }
 
-.PatientModal .button-group .save:hover {
+.patient-form button.save:hover {
   background-color: #008d00;
 }
 
-.PatientModal .button-group .save:disabled {
+.patient-form button.save:disabled {
   opacity: 0.5;
   background-color: #777777;
 }
 
-.PatientModal .button-group .delete {
+.patient-form button.delete {
   background-color: #fe0000;
 }
 
-.PatientModal .button-group .delete:hover {
+.patient-form button.delete:hover {
   background-color: #da0000;
 }
 
-.PatientModal .button-group .discard {
+.patient-form button.discard {
   background-color: #009df8;
 }
 
-.PatientModal .button-group .discard:hover {
+.patient-form button.discard:hover {
   background-color: #0076bb;
 }
 
-.PatientModal .button-group .discard:disabled {
+.patient-form button.discard:disabled {
   opacity: 0.5;
   background-color: #777777;
+}
+
+.patient-form button.print {
+  background-color: #aa00f8;
+}
+
+.patient-form button.print:hover {
+  background-color: #bb009c;
 }
 /*# sourceMappingURL=main.css.map */
